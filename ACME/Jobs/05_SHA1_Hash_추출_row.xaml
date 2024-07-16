@@ -1,0 +1,757 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_04_ACME_Client_세부정보_추출_재시도_" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="io_CurrentRow" Type="InOutArgument(sd:DataRow)" />
+    <x:Property Name="io_dt가공" Type="InOutArgument(sd:DataTable)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1230,2352</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_04_ACME_Client_세부정보_추출_재시도__1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap2010:Annotation.AnnotationText="&lt;05. SHA1 Hash 추출&gt;&#xA;sha1-online 사이트에서 Type이 [WI5]인 항목의 해시코드를 만들고, 추출하여  DT에 업데이트 한다.&#xA;(http://www.sha1-online.com/)" DisplayName="05_SHA1_Hash_추출" sap:VirtualizedContainerService.HintSize="699.3333333333334,2287.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dtWI_가공" />
+      <Variable x:TypeArguments="x:String" Name="combinedString" />
+      <Variable x:TypeArguments="x:String" Name="hashCode" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt가공" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="637.3333333333334,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Hash 추출 시작&quot;]" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="637.3333333333334,57.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="512,306" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap:VirtualizedContainerService.HintSize="450,221.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[io_dt가공]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="388,110.66666666666667" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="WI_가공" WorkbookPath="C:\Users\User\OneDrive\Documents\UiPath\강동_RPA수업_2024\ACME(필터링).xlsx" />
+          </Sequence>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: SHA1 online" sap:VirtualizedContainerService.HintSize="637.3333333333334,1473.3333333333333" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="330df5f1-d29c-4d46-81e2-633e99d32da4" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="603.3333333333334,1182" sap2010:WorkflowViewState.IdRef="Sequence_29">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="본문" sap:VirtualizedContainerService.HintSize="541.3333333333334,1040.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_24">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="strSearch" />
+                <Variable x:TypeArguments="x:String" Name="strSHA" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="479.3333333333333,57.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_14">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="416,192" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NGoToUrl DisplayName="SHA1 | Go To URL" sap:VirtualizedContainerService.HintSize="479.3333333333333,116.66666666666667" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" Url="http://www.sha1-online.com/" Version="V3" />
+                  </Sequence>
+                </ui:CommentOut.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:CommentOut>
+              <ui:MultipleAssign DisplayName="변수 초기화 | Multiple Assign" sap:VirtualizedContainerService.HintSize="479.3333333333333,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[strSearch]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[io_CurrentRow("Client ID").ToString+io_CurrentRow("Client Name").ToString+io_CurrentRow("Client Country").ToString]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[strSHA]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+              </ui:MultipleAssign>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="검색어 입력 | Type Into" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="479.3333333333333,254.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_4" ScopeIdentifier="330df5f1-d29c-4d46-81e2-633e99d32da4" Text="[strSearch + &quot;[k(Enter)]&quot;]" Version="V3">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="http://www.sha1-online.com/" DesignTimeRectangle="1007, 412, 499, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='textToHashId' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='textToHashId' tag='INPUT' type='text' class='' aaname='' /&gt;" Guid="4df32c86-020e-4793-b8bb-94f20ba84b8b" InformativeScreenshot="23de4cf0687871fa9ae9fc92d6b6bdff.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SHA1 online' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V3" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target DesignTimeRectangle="1506, 412, 70, 32" ElementType="Button" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='submit' class='' aaname='hash' check:text='hash' /&gt;" Guid="5af5f964-cdd6-4451-8b9d-9dc316936c03" SearchSteps="Selector, FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NTypeInto>
+              <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="479.3333333333333,124" sap2010:WorkflowViewState.IdRef="Delay_3" />
+              <uix:NGetText DisplayName="Hash | Get Text " sap:VirtualizedContainerService.HintSize="479.3333333333333,191.33333333333334" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="330df5f1-d29c-4d46-81e2-633e99d32da4" TextString="[strSHA]" Version="V3">
+                <uix:NGetText.Target>
+                  <uix:TargetAnchorable BrowserURL="http://www.sha1-online.com/" CvTextArea="812, 443, 478, 18" CvType="AnyWordGroup" DesignTimeRectangle="813, 441, 479, 22" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl id='result-sha1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='result-sha1' tag='SPAN' type='' class='' /&gt;" Guid="fccff5e2-a59b-4e54-87d2-f3b70208040c" InformativeScreenshot="f27213b7f386775dfca124211042c42c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SHA1 online' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V3" Visibility="Interactive" />
+                </uix:NGetText.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NGetText>
+              <Assign DisplayName="strSHA 값 넣기 | Assign" sap:VirtualizedContainerService.HintSize="479.3333333333333,110.66666666666667" sap2010:WorkflowViewState.IdRef="Assign_6">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Object">[io_CurrentRow("Hash")]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Object">[strSHA]</InArgument>
+                </Assign.Value>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Assign>
+            </Sequence>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="541.3333333333334,50.666666666666664" sap2010:WorkflowViewState.IdRef="CommentOut_13">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="654,1481.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each row" sap:VirtualizedContainerService.HintSize="592,1396.6666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[io_dt가공.Rows]">
+                    <ui:ForEach.Body>
+                      <ActivityAction x:TypeArguments="sd:DataRow">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="본문" sap:VirtualizedContainerService.HintSize="558,1258" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Sequence sap:VirtualizedContainerService.HintSize="496,1173.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign sap:VirtualizedContainerService.HintSize="434,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_4">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[combinedString]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[(row("Client ID").ToString().Trim() &amp; row("Client Name").ToString().Trim() &amp; row("Client Country").ToString().Trim()).Replace(" ", "")]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT textToHashId'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="330df5f1-d29c-4d46-81e2-633e99d32da4" Text="[combinedString]" Version="V3">
+                              <uix:NTypeInto.Target>
+                                <uix:TargetAnchorable BrowserURL="http://www.sha1-online.com/" DesignTimeRectangle="1007, 412, 499, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='textToHashId' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='textToHashId' tag='INPUT' type='text' class='' aaname='' /&gt;" Guid="4ef7aa92-9dc7-48ee-be61-a0ca11f541c7" InformativeScreenshot="11003bc8126ac843649d6b0d47b5312c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SHA1 online' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V3" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target DesignTimeRectangle="1506, 412, 70, 32" ElementType="Button" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='submit' class='' aaname='hash' check:text='hash' /&gt;" Guid="ad6bd57a-8b6c-453c-b5a0-d95797b0cce8" SearchSteps="Selector, FuzzySelector" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NTypeInto.Target>
+                              <uix:NTypeInto.VerifyOptions>
+                                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                    <InArgument x:TypeArguments="x:Boolean" />
+                                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                    <InArgument x:TypeArguments="x:Double" />
+                                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                </uix:VerifyExecutionTypeIntoOptions>
+                              </uix:NTypeInto.VerifyOptions>
+                            </uix:NTypeInto>
+                            <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="Delay_4" />
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'hash'" sap:VirtualizedContainerService.HintSize="434,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="330df5f1-d29c-4d46-81e2-633e99d32da4" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable BrowserURL="http://www.sha1-online.com/" DesignTimeRectangle="1506, 412, 70, 32" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='submit' class='' aaname='hash' check:text='hash' /&gt;" Guid="1127ab13-1870-4d68-9e10-113806ba4f7d" InformativeScreenshot="f68e44b0bb8f54451284aa32c1d60109.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SHA1 online' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V3" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target DesignTimeRectangle="1007, 412, 499, 32" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='textToHashId' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='textToHashId' tag='INPUT' type='text' class='' aaname='' /&gt;" Guid="f179f9cd-4814-4ad3-a624-518a7b92fd6d" SearchSteps="Selector, FuzzySelector" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NClick.Target>
+                              <uix:NClick.VerifyOptions>
+                                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                                  <uix:VerifyExecutionOptions.Retry>
+                                    <InArgument x:TypeArguments="x:Boolean" />
+                                  </uix:VerifyExecutionOptions.Retry>
+                                  <uix:VerifyExecutionOptions.Timeout>
+                                    <InArgument x:TypeArguments="x:Double" />
+                                  </uix:VerifyExecutionOptions.Timeout>
+                                </uix:VerifyExecutionOptions>
+                              </uix:NClick.VerifyOptions>
+                            </uix:NClick>
+                            <uix:NGetText DisplayName="Get Text 'Result for'" sap:VirtualizedContainerService.HintSize="434,191.33333333333334" sap2010:WorkflowViewState.IdRef="NGetText_4" ScopeIdentifier="330df5f1-d29c-4d46-81e2-633e99d32da4" TextString="[hashCode]" Version="V3">
+                              <uix:NGetText.Target>
+                                <uix:TargetAnchorable BrowserURL="http://www.sha1-online.com/" DesignTimeRectangle="1056, 530, 725, 33" DesignTimeScaleFactor="1.5" ElementType="Text" FullSelectorArgument="&lt;webctrl id='result-sha1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='result-sha1' tag='SPAN' type='' class='' /&gt;" Guid="7a9ea739-410b-468b-b3ba-f43e675e2ebe" InformativeScreenshot="41e444b17f6f33807126283632cf39fc.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SHA1 online' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V3" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target DesignTimeRectangle="657, 530, 1269, 33" ElementType="Text" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;p' tag='P' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='P' class='' aaname='Result for sha1:  ' check:innerText='Result for sha1:  12e251e0329dbfed236288bb6a297b02ac25dcbc' /&gt;" Guid="face7b5a-7cf2-4892-86ac-91e2c3f15765" SearchSteps="Selector, FuzzySelector" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NGetText.Target>
+                            </uix:NGetText>
+                            <Assign sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="Assign_5">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Object">[row("Hash")]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Object">[hashCode]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </Sequence>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEach.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ForEach>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-11, -11, 2582, 1550" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="d8997e29924cd4d371c2fd63cf37d5e3.jpg" Selector="&lt;html app='chrome.exe' title='SHA1 online' /&gt;" Title="SHA1 online" Url="http://www.sha1-online.com/" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="637.3333333333334,57.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_12">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="795.3333333333334,1785.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_23">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap:VirtualizedContainerService.HintSize="733.3333333333334,1697.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: SHA1 online" sap:VirtualizedContainerService.HintSize="671.3333333333334,1586.6666666666667" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="330df5f1-d29c-4d46-81e2-633e99d32da4" Version="V2" WindowResize="Maximize">
+              <uix:NApplicationCard.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="637.3333333333334,1344.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="575.3333333333334,57.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="654,1481.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each row" sap:VirtualizedContainerService.HintSize="592,1396.6666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[io_dt가공.Rows]">
+                            <ui:ForEach.Body>
+                              <ActivityAction x:TypeArguments="sd:DataRow">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                                </ActivityAction.Argument>
+                                <Sequence DisplayName="본문" sap:VirtualizedContainerService.HintSize="558,1258" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="496,1173.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Assign sap:VirtualizedContainerService.HintSize="434,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[combinedString]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[(row("Client ID").ToString().Trim() &amp; row("Client Name").ToString().Trim() &amp; row("Client Country").ToString().Trim()).Replace(" ", "")]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT textToHashId'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="330df5f1-d29c-4d46-81e2-633e99d32da4" Text="[combinedString]" Version="V3">
+                                      <uix:NTypeInto.Target>
+                                        <uix:TargetAnchorable BrowserURL="http://www.sha1-online.com/" DesignTimeRectangle="1007, 412, 499, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='textToHashId' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='textToHashId' tag='INPUT' type='text' class='' aaname='' /&gt;" Guid="4ef7aa92-9dc7-48ee-be61-a0ca11f541c7" InformativeScreenshot="11003bc8126ac843649d6b0d47b5312c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SHA1 online' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V3" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="1506, 412, 70, 32" ElementType="Button" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='submit' class='' aaname='hash' check:text='hash' /&gt;" Guid="ad6bd57a-8b6c-453c-b5a0-d95797b0cce8" SearchSteps="Selector, FuzzySelector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NTypeInto.Target>
+                                      <uix:NTypeInto.VerifyOptions>
+                                        <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                                          <uix:VerifyExecutionTypeIntoOptions.Retry>
+                                            <InArgument x:TypeArguments="x:Boolean" />
+                                          </uix:VerifyExecutionTypeIntoOptions.Retry>
+                                          <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                            <InArgument x:TypeArguments="x:Double" />
+                                          </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                                        </uix:VerifyExecutionTypeIntoOptions>
+                                      </uix:NTypeInto.VerifyOptions>
+                                    </uix:NTypeInto>
+                                    <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'hash'" sap:VirtualizedContainerService.HintSize="434,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="330df5f1-d29c-4d46-81e2-633e99d32da4" Version="V3">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable BrowserURL="http://www.sha1-online.com/" DesignTimeRectangle="1506, 412, 70, 32" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='submit' class='' aaname='hash' check:text='hash' /&gt;" Guid="1127ab13-1870-4d68-9e10-113806ba4f7d" InformativeScreenshot="f68e44b0bb8f54451284aa32c1d60109.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SHA1 online' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V3" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="1007, 412, 499, 32" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='textToHashId' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='textToHashId' tag='INPUT' type='text' class='' aaname='' /&gt;" Guid="f179f9cd-4814-4ad3-a624-518a7b92fd6d" SearchSteps="Selector, FuzzySelector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NClick.Target>
+                                      <uix:NClick.VerifyOptions>
+                                        <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                                          <uix:VerifyExecutionOptions.Retry>
+                                            <InArgument x:TypeArguments="x:Boolean" />
+                                          </uix:VerifyExecutionOptions.Retry>
+                                          <uix:VerifyExecutionOptions.Timeout>
+                                            <InArgument x:TypeArguments="x:Double" />
+                                          </uix:VerifyExecutionOptions.Timeout>
+                                        </uix:VerifyExecutionOptions>
+                                      </uix:NClick.VerifyOptions>
+                                    </uix:NClick>
+                                    <uix:NGetText DisplayName="Get Text 'Result for'" sap:VirtualizedContainerService.HintSize="434,191.33333333333334" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="330df5f1-d29c-4d46-81e2-633e99d32da4" TextString="[hashCode]" Version="V3">
+                                      <uix:NGetText.Target>
+                                        <uix:TargetAnchorable BrowserURL="http://www.sha1-online.com/" DesignTimeRectangle="1056, 530, 725, 33" DesignTimeScaleFactor="1.5" ElementType="Text" FullSelectorArgument="&lt;webctrl id='result-sha1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='result-sha1' tag='SPAN' type='' class='' /&gt;" Guid="7a9ea739-410b-468b-b3ba-f43e675e2ebe" InformativeScreenshot="41e444b17f6f33807126283632cf39fc.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SHA1 online' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V3" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="657, 530, 1269, 33" ElementType="Text" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;p' tag='P' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='P' class='' aaname='Result for sha1:  ' check:innerText='Result for sha1:  12e251e0329dbfed236288bb6a297b02ac25dcbc' /&gt;" Guid="face7b5a-7cf2-4892-86ac-91e2c3f15765" SearchSteps="Selector, FuzzySelector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NGetText.Target>
+                                    </uix:NGetText>
+                                    <Assign sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Object">[row("Hash")]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Object">[hashCode]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </Sequence>
+                                </Sequence>
+                              </ActivityAction>
+                            </ui:ForEach.Body>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:ForEach>
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:CommentOut>
+                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_dt가공]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="575.3333333333334,1196.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+                      <ui:ForEachRow.Body>
+                        <ActivityAction x:TypeArguments="sd:DataRow">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="본문" sap:VirtualizedContainerService.HintSize="541.3333333333334,1003.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="strSearch" />
+                              <Variable x:TypeArguments="x:String" Name="strSHA" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="479.3333333333333,57.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                              <ui:CommentOut.Body>
+                                <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="416,192" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uix:NGoToUrl DisplayName="SHA1 | Go To URL" sap:VirtualizedContainerService.HintSize="479.3333333333333,116.66666666666667" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="http://www.sha1-online.com/" Version="V3" />
+                                </Sequence>
+                              </ui:CommentOut.Body>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:CommentOut>
+                            <ui:MultipleAssign DisplayName="변수 초기화 | Multiple Assign" sap:VirtualizedContainerService.HintSize="479.3333333333333,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                              <ui:MultipleAssign.AssignOperations>
+                                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="x:String">[strSearch]</OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="x:String">[CurrentRow("Client ID").ToString+CurrentRow("Client Name").ToString+CurrentRow("Client Country").ToString]</InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="x:String">[strSHA]</OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="x:String">
+                                        <Literal x:TypeArguments="x:String" Value="" />
+                                      </InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
+                                </scg:List>
+                              </ui:MultipleAssign.AssignOperations>
+                            </ui:MultipleAssign>
+                            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="검색어 입력 | Type Into" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="479.3333333333333,254.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="330df5f1-d29c-4d46-81e2-633e99d32da4" Text="[strSearch + &quot;[k(Enter)]&quot;]" Version="V3">
+                              <uix:NTypeInto.Target>
+                                <uix:TargetAnchorable BrowserURL="http://www.sha1-online.com/" DesignTimeRectangle="1007, 412, 499, 32" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='textToHashId' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='textToHashId' tag='INPUT' type='text' class='' aaname='' /&gt;" Guid="4df32c86-020e-4793-b8bb-94f20ba84b8b" InformativeScreenshot="23de4cf0687871fa9ae9fc92d6b6bdff.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SHA1 online' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V3" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target DesignTimeRectangle="1506, 412, 70, 32" ElementType="Button" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='submit' class='' aaname='hash' check:text='hash' /&gt;" Guid="5af5f964-cdd6-4451-8b9d-9dc316936c03" SearchSteps="Selector, FuzzySelector" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NTypeInto.Target>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </uix:NTypeInto>
+                            <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="479.3333333333333,124" sap2010:WorkflowViewState.IdRef="Delay_2" />
+                            <uix:NGetText DisplayName="Hash | Get Text " sap:VirtualizedContainerService.HintSize="479.3333333333333,191.33333333333334" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="330df5f1-d29c-4d46-81e2-633e99d32da4" TextString="[strSHA]" Version="V3">
+                              <uix:NGetText.Target>
+                                <uix:TargetAnchorable BrowserURL="http://www.sha1-online.com/" CvTextArea="812, 443, 478, 18" CvType="AnyWordGroup" DesignTimeRectangle="813, 441, 479, 22" DesignTimeScaleFactor="1" ElementType="Text" FullSelectorArgument="&lt;webctrl id='result-sha1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='result-sha1' tag='SPAN' type='' class='' /&gt;" Guid="fccff5e2-a59b-4e54-87d2-f3b70208040c" InformativeScreenshot="f27213b7f386775dfca124211042c42c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='SHA1 online' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V3" Visibility="Interactive" />
+                              </uix:NGetText.Target>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </uix:NGetText>
+                            <Assign DisplayName="strSHA 값 넣기 | Assign" sap:VirtualizedContainerService.HintSize="479.3333333333333,108" sap2010:WorkflowViewState.IdRef="Assign_3">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Object">[CurrentRow("Hash")]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Object">[strSHA]</InArgument>
+                              </Assign.Value>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Assign>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ForEachRow.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:ForEachRow>
+                  </Sequence>
+                </ActivityAction>
+              </uix:NApplicationCard.Body>
+              <uix:NApplicationCard.TargetApp>
+                <uix:TargetApp Area="-11, -11, 2582, 1550" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAz2SURBVGhDvZcJdJTVFYAHEjAkQBYgCZBlJplsM5msQIBAFgIkrIm1KggJad1PrRwXTqkKwVqKC5iYAFEIBETUihJET6tlGatgi7JojxSPBRIhBDGQCXEhYcK7vfct//wTfza1fed859533/vnfe/N+7OYfo42wNcnaFZ4SPkT8ZGV9Y7Yhv1jUxqPjk9znZkwAs5MGAlHc9JdH49JbmzISHA+ERdZWTgkqCTCr6+5V+/egQEBAWVDQkO3DRs+/PPIqKgOAvMjWGvAsVKaI5f5eRtJ3x0ZNr8hLd6pREXU5fmqL/gqP5NzeHwGLHAksFiz+VK02QxXIio6+kJwSEhVbx+fMLn0T2skvsA8rOI/41PbzuRnMi6Wl+EdSRyhqK8RW0YlsySLxVD2SuA3c76fv3+x1PhxbYF5KIqrq0FCdKIeOV7LzWDqpE9jfjo3nfdP5WbAH1KTDOWuFfw2WGBg4GOo0ksYXWOj+7prhP0QnSaHBHtEJcpjHsa8DAnNyYT1I+yGUj+GgP79fyXVrt5uCRs874txqS5NEKW4oCaql5XgabcQOemsJSeNbR/lgBgDET14uoa5ETh+0c/Pb5JUvHx7ODq8QskqMXW6JCdimog4RuNcHmstuekyZsDcpDhDEQUJW2JiICIykkP51TZBP7mkpnF7KCq8Qn+6SkacrMxzUBLjqfFSmHKsEXwM+Vd2qqGAgkTN+FIPHjIE4hMSOJRT7UqbwDHm4+MzVOp6t1vCBs1r4VK66yD7QlQKyiik02gjIh+XylSsSb/yi0unTcJ33nUXnDx5knP7HXfwGo0ZPaPoP2DAPVLZ0+iFPTLG0cYFUZokSFR/qkIaZbmoiM0q55tIg2aMRHF8LDNaXEFXxhoXB19//TWodvr0aYi1WulHp+EzitCwsHektqfty7I1ep0iCVEuhfSR59kpTMlqjCNSebRZjBdX0Abi4uPh7NmzUh94TpuiMaNnFLjBdqkt2oORYRXaKRI6cW9BktNBm+hROymj1WBhgu43QScdFBwMs2bPhsOHD8Nnn30Gt9x6K6/RmJp3mc/olOomU9/B/uZnHsjznCZKnUT4BjQhT05jPCrGOlhzUTacX1cLnQc/BnfLKX6adLpGiytCBg2C1LQ0mDN3LlTX1EB1dTXMmTOH12jM6BmF1zdgvidjQ86GEjg4daR2et6CUjg7RaLyVDj9yyIubdTGZmcbLk4/ZULDw2HhwoXQ2toqZ3savRMLFiyge87nGn0G/QHI5fsO8jdnvPwLyETu/eNkTewEnqq3tOCEYkwyc1U9BZc6OuSyorW4GLz9SResdXbCxBt/bbj48IgIsNnt0NXVxZ9hjPFITeUXLlyAJJuNzzX6DO13QUhOVHna5mKWvrkEMjbfCH+5OUsKOhiPYxUOLk35lxjb61bzhVR761AX3LPhWxhZ0Q6jlpzn0X7zSsPFScqRkgJNTU3gcrk47e3tHNWnsZTU1MtuQPsxmrg0/1DaS8WM5GkjZU8XCVkp/eVoksaoGOOAtqonpTad+CW4u16Ij1jSDiOREZQjafMPGi6uXswU3ATddyNog/q5PfHx9TXz65O6aSZLxQ2kv1QCaQjFlXdnsy9H2xmeNBemvEn2m0smM3VtSH5GZYcmTGQu9kB969jZhgIkRqeLd9kQGruc/O03xUJQQO8g08DMsOK0TcXQk+x1M+FwjoM1ZZE4bSIZKDZl2dg3b2/j8tTuWv8Nirp0oDhKZ+hqqfcfgOgY77+H9GL0khphNJeIs5rhxFuJUDYlsNw07DZ7ZeqLM0FQzCNtIOXFGezJ347XpBuz7NA42g7NN06W6gDb8c6TqDFiEwrbbfVeEj+FV5fFgfvDRFhxf2iVKXbhGGfKxpng2DiD6Tfh2DidUX3fpDTg8pJzzy6T+gDTVpyH9EUuDyjq1e9Bwsw/GQpdD8sfjAX33gTm3psIbyyL2GZKWl7QmLJxBhjh2DCdzV5awBpHJrHjSOMoG1w48BGX//x0N6ShFEFyKr8ybWCbtxWi467/nxt7khnerbGifBzKx7HuvfFw7HVLoyl5wzSWsgGFEQdnOs+pTjnVthen8w0cxw2ol3f3vy9CKgpxHpMRIVER9TV93QWOBw5DbHapoagR5SUWOPEmyu+xMvcevD4Yu/daofWvFpfJUT8dkutRFuPlKKguguMjEtmxzATtt03t7guQguIKJetVM8j5ZmVuu3MHXqtlkDe9FPLz8/kvraQEM+SONkPpTDNb/oAF9tbFAsm698Sw7j2Y77HyPs8xmuz1U1kySnozDZLXI5jb109lNqTq9tFwLDNR28DqXd9rcnocV+j3HFM1+izVSNQjq4gR7MX7j9H9gQW/AYyYm5JWFrps66cwOwkjlFO0r5vK+1S3rZvCRtUWwafZNvwjrZkvtO1gJzgebYPkR8/xSCI86vMeUc1NppquvguvI2/u81yKZN0fmHEjFuxb5AYwxxqPIuc1k/XpvEaSJJJQVBPHqKA6sXB+Nny/fx9f6xT+AiMhgZAzpufYD+ceaenmn8na/8GlulGOBD1EMap56lGMOPra8EZTxG8yGmx1U/GUhaytbopXnlRXxAhex3n7X1/DF6NWXnce7ChgRykRr5/Jy9vlpwFcOvY4ykWjqDcoC+73I1GawFz2d1aHOU3hs2yVQk7I8s3IPpG4thA3QLGIEbMqi+VyAA0HusD2yDmwoQgHc5Litaug5jUc6JSfBtD90RgUjMDTJkGKESRNsrwvogTrK+4LrDIFjhleTpJcdG0REHwzaxWiJhD9fS2fyiUB5q3tgCQUUZBU0iNnNVH9mPecc/jsefkpeH3ObFGikuEoPAyhGAHdvEZ9zD8QzBznV2zy6ecbxOXWFEHCmsl8E4k8x01h1EM1mlPwyjzo6PqWL9zcdgkmPu2CRJQm8cTfi+jJz2k1mqNqE59xQTO+R9Q6Or/F088iWSH696E8p9itj5xhcnwoM4f5mPmf05EPjXQmrimUooWQ8MJklMf+C6om6rwva0s/rOWLU6NNlOFpktwPkBvQU4pz6RnV2r/Au8+lSC6ccd4fSjVdPxw3MRQ3KOoH6gYf4vLUggqi5iegmCL++UnM05/sVedjz4tazf5NUkG0rfs7YcJTbRCPkgmIiorSNe2wVXfnqb3x6Tpoc9L10IR1hKG0vi/oRkoL/eZJfZOpt59vkLUy3xWHcgQXlJIU4yU0RlFfo2+CroC+HTnVDTsOd0H1ju+gZud3uLELXidOraPzG1i6txa2bE9CqVA6ZYxhMg9DScoVodgPBfd7QxhBY9r1US1kekyFkoqvRdnaiSy+dhLmCNassm9djVH24+R47ktz2BufvyvVrt7+eeoTyN00h+XW5aAsiineG4yCiNYfwpHyyCDaAKz73YB6qe1p9C3ELM9rU2JxqxGKPJ/o1SdprU9jsp+3aS4s3VPLBU92fCV1gedUq/7oRchcXyKexeeaduBPFU1sMEZClzsp9xrjRIX19j591YKnxVTgCfMFYlcXME2cR4Xox66icf6NaDnVrasEVFNRjOtrE9iClzNQJgSvA4mFkKiQdAbLnAjxjji2uNyvQuoat8iFWYeUhELJW1cVSPTjPfv6mppfADErJ3B5yjNq86Dpb/gySiku6CTJEKyJ6HYGMV5zBmMfwXj0lYHHpeblm2+In9nyTI4rdmUBKGhRfSQZEfOZEqMoyOdjip792JUToPK1RJQLRlkSC2IXnYHYJ4JkLZBRvLh7IK8RrW8NdJkvd3V6tgGjwsstNfmMUIsKMK/BSGA/BqNnjhijvlbHSLn+uXEvZEspj5zIA6VwILi1OIBhzmNxdp8SqXdtLWRKzBJa3AhLdZ4mqdWr838wT2HG+fQM8dpW/FOZxJSgcyCKiyhk+6P0ANqUAPNFZTcskVrX14KmmCu4GCIkRCSUmPk5zKtpU/kcbVz2VSRmrRvBhfR0O0nWu+beHcB4fXd/WDyvz5Vf2qs1/+TBJVFPjnOhqCZieS4fop/LRflcRrmqWXAO1Qnq0zP6ftM7+FKiHIl5E4D4Yz0ALu7qx9xI63Z/V1mhb7nU+GnNN9jPHLE4q5ELVqF4lYzY55KYR1flIGJMQxvPYQ9uTBZyXNQfSJKLi5qIu/pRhI/X+B0yh/W6thf2elpgUXSFEotCKXNVLheNqqRcRJVHV4oxInvVaDx9/OlCokJW4qdJu3fdwFrf7OtaVOb74+77tTb6NgbNTqgnUZLUE7liPN9AZOV4PoY5r6/9M/4biIIoTNKCnTdoeeubfdoWlflUBAX0CpLL/O8bbaT/yPDyoQ9nHiJxLvxsjoao5cDYlaNJ3gOJ7+zLENj5bB/nfTf5zP+/ihs12gy97EElMZVD7nU4hz02qpE2EbF8HHt1y3A8YV/XF5t9G19/3Ldh+b0+laWFveb9PNIm038Bouv4qnV2hdUAAAAASUVORK5CYII=" InformativeScreenshot="d8997e29924cd4d371c2fd63cf37d5e3.jpg" Selector="&lt;html app='chrome.exe' title='SHA1 online' /&gt;" Title="SHA1 online" Url="http://www.sha1-online.com/" />
+              </uix:NApplicationCard.TargetApp>
+            </uix:NApplicationCard>
+          </Sequence>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="637.3333333333334,57.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_11">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="670,1037.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_22">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="608,949.3333333333334" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="C:\Users\User\OneDrive\Documents\UiPath\강동_RPA수업_2024\ACME.xlsx">
+            <ui:ExcelApplicationScope.Body>
+              <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="574,816.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence sap:VirtualizedContainerService.HintSize="512,728.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="sd:DataTable" Name="dtHash" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,57.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="무시된 액티비티" sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:BuildDataTable DataTable="[io_dt가공]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="354,82.66666666666667" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Hash&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:BuildDataTable>
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:CommentOut>
+                    <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each row" sap:VirtualizedContainerService.HintSize="450,450" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[io_dt가공.Rows]">
+                      <ui:ForEach.Body>
+                        <ActivityAction x:TypeArguments="sd:DataRow">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="본문" sap:VirtualizedContainerService.HintSize="416,302" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[new Object() { row(&quot;Hash&quot;) }]" DataTable="[io_dt가공]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="354,214" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ForEach.Body>
+                    </ui:ForEach>
+                    <ui:ExcelWriteRange AddHeaders="False" DataTable="[io_dt가공]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="450,110.66666666666667" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="WI_가공" StartingCell="J2" />
+                  </Sequence>
+                </Sequence>
+              </ActivityAction>
+            </ui:ExcelApplicationScope.Body>
+          </ui:ExcelApplicationScope>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[io_dt가공]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="637.3333333333334,148" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="WI_가공" WorkbookPath="ACME.xlsx" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="637.3333333333334,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Hash 추출 종료&quot;]" />
+  </Sequence>
+</Activity>
