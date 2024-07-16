@@ -25,3 +25,15 @@
 1. 이 리포지토리를 클론합니다:
    ```bash
    git clone https://github.com/summertime1565/RPA.git
+
+2. UiPath Studio를 설치하고 프로젝트 파일을 엽니다.
+
+3. 필요한 종속성을 설치합니다.
+
+4. 각 프로젝트 폴더로 이동하여 README 파일의 지시에 따라 프로젝트를 실행합니다.
+
+## 작성자
+Summertime1565
+
+## 라이선스
+이 프로젝트는 MIT 라이선스 하에 라이선스가 부여됩니다. 자세한 내용은 LICENSE.md 파일을 참조하세요.
