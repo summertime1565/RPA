@@ -1,0 +1,316 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_04_작업물_메일_발송" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_dt_부동산공시가격" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_복제_엑셀_파일" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1136,2322</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>_04_작업물_메일_발송_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="_04_작업물_메일_발송" sap:VirtualizedContainerService.HintSize="592,2257.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="str아이디" />
+      <Variable x:TypeArguments="ss:SecureString" Name="sstr비밀번호" />
+      <Variable x:TypeArguments="x:String" Name="htmlTable" />
+      <Variable x:TypeArguments="x:String" Name="htmlTableRows" />
+      <Variable x:TypeArguments="x:String" Name="mailBodyTemplate" />
+      <Variable x:TypeArguments="x:String" Name="mailBody" />
+      <Variable x:TypeArguments="x:String" Name="mailSubject" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="작업 시작 선언 | Log Message" sap:VirtualizedContainerService.HintSize="530,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;작업물 메일 발송 작업 시작&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="지메일 로그인 (계정 가져오기)" AssetName="UiPath_Gmail_login" CacheStrategy="None" DisplayName="계정 정보 가져오기 | Get Credential" FolderPath="summertime1565@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="530,102.66666666666667" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[sstr비밀번호]" Username="[str아이디]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetRobotCredential>
+    <Assign sap2010:Annotation.AnnotationText="HTML 스타일 및 표에 작성될 Row를 추가&#xA;&#xA;&lt;style&gt;&#xA;    table {&#xA;        width: 100%; /* 테이블 너비를 100%로 설정 */&#xA;        border-collapse: collapse; /* 테이블 테두리를 하나로 합침 */&#xA;    }&#xA;    th, td {&#xA;        border: 1px solid #ddd; /* 셀에 테두리 추가 */&#xA;        padding: 8px; /* 셀 내부 여백 설정 */&#xA;    }&#xA;    th {&#xA;        background-color: #4CAF50; /* 헤더 셀의 배경색을 녹색으로 설정 */&#xA;        color: white; /* 헤더 셀의 글자색을 흰색으로 설정 */&#xA;    }&#xA;&lt;/style&gt;&#xA;&#xA;+&#xA;&#xA;각 행 쌓기" DisplayName="HTML 스타일 추가 | Assign" sap:VirtualizedContainerService.HintSize="530,480" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[htmlTable]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String" xml:space="preserve">&lt;style&gt;
+                        table {width: 100%; border-collapse: collapse;}
+                        th, td {border: 1px solid #ddd; padding: 8px;}
+                        th {background-color: #4CAF50; color: white; text-align: center;}
+                        td {text-align: center;}
+                    &lt;/style&gt;
+                    &lt;table style='width:100%; border-collapse: collapse;'&gt;
+                        &lt;thead&gt;
+                            &lt;tr style='background-color: #4CAF50; color: white;'&gt;
+                                &lt;th style='border: 1px solid #ddd; padding: 8px;'&gt;고객번호&lt;/th&gt;
+                                &lt;th style='border: 1px solid #ddd; padding: 8px;'&gt;고객명&lt;/th&gt;
+                                &lt;th style='border: 1px solid #ddd; padding: 8px;'&gt;대분류&lt;/th&gt;
+                                &lt;th style='border: 1px solid #ddd; padding: 8px;'&gt;중분류&lt;/th&gt;
+                                &lt;th style='border: 1px solid #ddd; padding: 8px;'&gt;소분류&lt;/th&gt;
+                                &lt;th style='border: 1px solid #ddd; padding: 8px;'&gt;단지명&lt;/th&gt;
+                                &lt;th style='border: 1px solid #ddd; padding: 8px;'&gt;동&lt;/th&gt;
+                                &lt;th style='border: 1px solid #ddd; padding: 8px;'&gt;호&lt;/th&gt;
+                                &lt;th style='border: 1px solid #ddd; padding: 8px;'&gt;기준가격(￦)&lt;/th&gt;
+                                &lt;th style='border: 1px solid #ddd; padding: 8px;'&gt;공시기준일&lt;/th&gt;
+                                &lt;th style='border: 1px solid #ddd; padding: 8px;'&gt;공시기준일 가격(￦)&lt;/th&gt;
+                                &lt;th style='border: 1px solid #ddd; padding: 8px;'&gt;변동&lt;/th&gt;
+                                &lt;th style='border: 1px solid #ddd; padding: 8px;'&gt;RPA&lt;/th&gt;
+                            &lt;/tr&gt;
+                        &lt;/thead&gt;
+                        &lt;tbody&gt;</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="이 코드는 for each row 반복문 내에서 HTML 테이블의 행을 동적으로 생성하고 있습니다. 각 데이터 행(CurrentRow)의 특정 열 값을 가져와서 HTML 테이블 행(&lt;tr&gt;)으로 변환합니다.&#xA;&#xA;htmlTable = htmlTable + String.Format(&quot;&lt;tr&gt;...는 각 행을 HTML 형식으로 추가합니다.&#xA;CurrentRow의 각 열 값을 가져와 &lt;td&gt; 태그로 감싸서 HTML 테이블의 셀로 변환합니다.&#xA;모든 셀을 합쳐 하나의 행(&lt;tr&gt;)을 만듭니다." DataTable="[in_dt_부동산공시가격]" DisplayName="DT에 HTML 스타일 적용 | For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="530,604" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="본문" sap:VirtualizedContainerService.HintSize="496,275.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap2010:Annotation.AnnotationText="' HTML 테이블의 각 행을 추가합니다.&#xA;' 고객번호, 고객명, 대분류, 중분류, 소분류, 단지명, 동, 호, 기준가격(￦), 공시기준일, 공시기준일 가격(￦), 변동, RPA의 값을 HTML 테이블 셀로 변환합니다." sap:VirtualizedContainerService.HintSize="434,187.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[htmlTable]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">[htmlTable + String.Format("&lt;tr&gt;
+                                                    &lt;td style='border: 1px solid #ddd; padding: 8px;'&gt;{0}&lt;/td&gt;
+                                                    &lt;td style='border: 1px solid #ddd; padding: 8px;'&gt;{1}&lt;/td&gt;
+                                                    &lt;td style='border: 1px solid #ddd; padding: 8px;'&gt;{2}&lt;/td&gt;
+                                                    &lt;td style='border: 1px solid #ddd; padding: 8px;'&gt;{3}&lt;/td&gt;
+                                                    &lt;td style='border: 1px solid #ddd; padding: 8px;'&gt;{4}&lt;/td&gt;
+                                                    &lt;td style='border: 1px solid #ddd; padding: 8px;'&gt;{5}&lt;/td&gt;
+                                                    &lt;td style='border: 1px solid #ddd; padding: 8px;'&gt;{6}&lt;/td&gt;
+                                                    &lt;td style='border: 1px solid #ddd; padding: 8px;'&gt;{7}&lt;/td&gt;
+                                                    &lt;td style='border: 1px solid #ddd; padding: 8px;'&gt;{8}&lt;/td&gt;
+                                                    &lt;td style='border: 1px solid #ddd; padding: 8px;'&gt;{9}&lt;/td&gt;
+                                                    &lt;td style='border: 1px solid #ddd; padding: 8px;'&gt;{10}&lt;/td&gt;
+                                                    &lt;td style='border: 1px solid #ddd; padding: 8px;'&gt;{11}&lt;/td&gt;
+                                                    &lt;td style='border: 1px solid #ddd; padding: 8px;'&gt;{12}&lt;/td&gt;
+                                                &lt;/tr&gt;",
+                                                CurrentRow("고객번호").ToString(), CurrentRow("고객명").ToString(), CurrentRow("대분류").ToString(), CurrentRow("중분류").ToString(), CurrentRow("소분류").ToString(), CurrentRow("단지명").ToString(),
+                                                CurrentRow("동").ToString(), CurrentRow("호").ToString(), CurrentRow("기준가격(￦)").ToString(), CurrentRow("공시기준일").ToString(), CurrentRow("공시기준일 가격(￦)").ToString(), CurrentRow("변동").ToString(), CurrentRow("RPA").ToString())]</InArgument>
+              </Assign.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Assign>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <Assign DisplayName="HTML 태그 닫기 | Assign" sap:VirtualizedContainerService.HintSize="530,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[htmlTable]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[htmlTable + "&lt;/tbody&gt;&lt;/table&gt;"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Sequence DisplayName="메일 작성 | Sequence" sap:VirtualizedContainerService.HintSize="530,570" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap2010:Annotation.AnnotationText="String.Format 사용 (앞에서 선언한 작업지시서 날짜 및 이름 변수 사용)" DisplayName="메일 제목 | Assign" sap:VirtualizedContainerService.HintSize="434,148" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[mailSubject]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[String.Format("[부동산 공시가격] 2024/06/20 공시기준일: 2024.01.01 공시가격 검색 결과_김혜민")]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <Assign sap2010:Annotation.AnnotationText="메일 본문을 작성하며 본문 중간에 HTML 테이블을 추가합니다." DisplayName="메일 본문 양식 | Assign" sap:VirtualizedContainerService.HintSize="434,148.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[mailBodyTemplate]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String" xml:space="preserve">
+    안녕하세요.&lt;br&gt;&lt;br&gt;
+    2024/06/20 부동산 공시가격 검색 결과 파일을 송부드립니다.&lt;br&gt;&lt;br&gt;
+    검색 결과 파일의 내용은 아래와 같습니다.&lt;br&gt;&lt;br&gt;
+    {0}&lt;br&gt;&lt;br&gt;
+    자세한 사항은 첨부파일을 참고 부탁드립니다.&lt;br&gt;&lt;br&gt;
+    감사합니다.
+</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <Assign sap2010:Annotation.AnnotationText="메일 본문 변수에 String.Format 형식으로 메일 본문과 HTML 테이블을 추가합니다." DisplayName="메일 본문 | Assign" sap:VirtualizedContainerService.HintSize="434,153.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_4">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[mailBody]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[String.Format(mailBodyTemplate, htmlTable)]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+    </Sequence>
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[mailBody]" DisplayName="메일 발송 | Send SMTP Mail Message" Email="[str아이디]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="530,190" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="True" Port="587" SecureConnection="Auto" SecurePassword="[sstr비밀번호]" Server="smtp.gmail.com" Subject="[mailSubject]" To="summertime1565@gmail.com">
+      <ui:SendMail.Files>
+        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+          <InArgument x:TypeArguments="x:String">
+            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_복제_엑셀_파일" />
+          </InArgument>
+        </scg:List>
+      </ui:SendMail.Files>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:SendMail>
+    <ui:LogMessage DisplayName="작업 종료 선언 | Log Message" sap:VirtualizedContainerService.HintSize="530,48" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;작업물 메일 발송 작업 종료&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>
