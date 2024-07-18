@@ -1,0 +1,337 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="AddResult" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:uasa="clr-namespace:UiPath.Activities.System.Arrays;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_dt_TransactionData" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="out_intTotalCnt" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_intSuccessCnt" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_intFailCnt" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_strMemo" Type="OutArgument(x:String)" />
+    <x:Property Name="out_successItems" Type="OutArgument(x:String)" />
+    <x:Property Name="out_failItems" Type="OutArgument(x:String)" />
+    <x:Property Name="in_topRankDataTable" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_successItemsList" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="in_failItemsList" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="out_topRankData" Type="OutArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1017.3333333333335,4226.666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>AddResult_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Activities.System.Arrays</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="//String.Format에 사용할 변수 선언&#xA;//in_dt_TransactionData Row을 활용하여 저장" DisplayName="AddResult" sap:VirtualizedContainerService.HintSize="704,4162" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign sap2010:Annotation.AnnotationText="//리스트 초기화" DisplayName="성공 목록 리스트 변수 선언 | Assign" sap:VirtualizedContainerService.HintSize="642,148" sap2010:WorkflowViewState.IdRef="Assign_10">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:List(x:String)">[in_successItemsList]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <Assign sap2010:Annotation.AnnotationText="//리스트 초기화" DisplayName="실패 목록 리스트 변수 선언 | Assign" sap:VirtualizedContainerService.HintSize="642,148" sap2010:WorkflowViewState.IdRef="Assign_11">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:List(x:String)">[in_failItemsList]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:List(x:String)">[New List(Of String)]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="//리스트를 하나씩 비교하여 String에 할당" DataTable="[in_dt_TransactionData]" DisplayName="리스트를 추가하는 반복문 | For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="642,1576.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="본문" sap:VirtualizedContainerService.HintSize="608,1346" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If sap2010:Annotation.AnnotationText="//성공일 경우&#xA;//CurrentRow(&quot;RPA수행결과&quot;).ToString() = &quot;성공&quot;" Condition="[CurrentRow(&quot;RPA수행결과&quot;).ToString() = &quot;성공&quot;]" DisplayName="성공 Row | If" sap:VirtualizedContainerService.HintSize="546,1258" sap2010:WorkflowViewState.IdRef="If_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap2010:Annotation.AnnotationText="//성공 리스트에 업데이트" DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,308" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" sap2010:Annotation.AnnotationText="//성공" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,189.33333333333334" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_3" ItemToAppend="[CurrentRow(&quot;검색상품&quot;).ToString()]" List="[in_successItemsList]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uasa:AppendItemToList>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,742" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:IfElseIfV2 sap2010:Annotation.AnnotationText="//실패일 경우" Condition="[CurrentRow(&quot;RPA수행결과&quot;).ToString() = &quot;실패&quot;]" DisplayName="실패 Row | Else if" sap:VirtualizedContainerService.HintSize="450,654" sap2010:WorkflowViewState.IdRef="IfElseIfV2_1">
+                    <ui:IfElseIfV2.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,104.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </ui:IfElseIfV2.Else>
+                    <ui:IfElseIfV2.ElseIfs>
+                      <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True" />
+                    </ui:IfElseIfV2.ElseIfs>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:IfElseIfV2.Then>
+                      <Sequence sap2010:Annotation.AnnotationText="//실패 리스트에 업데이트" DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,308" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uasa:AppendItemToList x:TypeArguments="x:String" ItemIndex="{x:Null}" sap2010:Annotation.AnnotationText="//실패" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="354,189.33333333333334" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_4" ItemToAppend="[CurrentRow(&quot;검색상품&quot;).ToString()]" List="[in_failItemsList]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uasa:AppendItemToList>
+                      </Sequence>
+                    </ui:IfElseIfV2.Then>
+                  </ui:IfElseIfV2>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+    <Assign sap2010:Annotation.AnnotationText="//in_dt_TransactionData.Rows.Count" DisplayName="총 건수 | Assign" sap:VirtualizedContainerService.HintSize="642,148" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[out_intTotalCnt]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[in_dt_TransactionData.Rows.Count]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <Assign sap2010:Annotation.AnnotationText="//in_dt_TransactionData.AsEnumerable().Count(Function(row) row(&quot;RPA수행결과&quot;).ToString() = &quot;성공&quot;)" DisplayName="성공 건수 | Assign" sap:VirtualizedContainerService.HintSize="642,162.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[out_intSuccessCnt]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[in_dt_TransactionData.AsEnumerable().Count(Function(row) row("RPA수행결과").ToString() = "성공")]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <Assign sap2010:Annotation.AnnotationText="//in_dt_TransactionData.AsEnumerable().Count(Function(row) row(&quot;RPA수행결과&quot;).ToString() = &quot;실패&quot;)" DisplayName="미처리(실패) 건수 | Assign" sap:VirtualizedContainerService.HintSize="642,162.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[out_intFailCnt]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[in_dt_TransactionData.AsEnumerable().Count(Function(row) row("RPA수행결과").ToString() = "실패")]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <Assign sap2010:Annotation.AnnotationText="//&quot;메모 없음&quot;" DisplayName="비고 | Assign" sap:VirtualizedContainerService.HintSize="642,148" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_strMemo]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">메모 없음</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <Sequence sap2010:Annotation.AnnotationText="//리스트를 String에 할당&#xA;//in_successItemsList는 성공 항목들을 담고 있는 리스트입니다.&#xA;String.Join 메서드는 리스트의 각 항목을 콤마(, )로 구분된 하나의 문자열로 변환합니다.&#xA;결과 문자열은 out_successItems 변수에 저장됩니다.&#xA;//in_failItemsList는 실패 항목들을 담고 있는 리스트입니다.&#xA;String.Join 메서드는 리스트의 각 항목을 콤마(, )로 구분된 하나의 문자열로 변환합니다.&#xA;결과 문자열은 out_failItems 변수에 저장됩니다." DisplayName="String 할당 | Sequence" sap:VirtualizedContainerService.HintSize="642,598" sap2010:WorkflowViewState.IdRef="Sequence_7">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap2010:Annotation.AnnotationText="//성공한 항목 리스트를 콤마로 구분된 문자열로 변환하여 out_successItems 변수에 저장합니다" DisplayName="성공 String | Assign" sap:VirtualizedContainerService.HintSize="434,162.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[out_successItems]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[String.Join(", ", in_successItemsList)]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <Assign sap2010:Annotation.AnnotationText="//실패한 항목 리스트를 콤마로 구분된 문자열로 변환하여 out_failItems 변수에 저장합니다." DisplayName="실패 String | Assign" sap:VirtualizedContainerService.HintSize="434,153.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[out_failItems]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[String.Join(", ", in_failItemsList)]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+    </Sequence>
+    <Assign sap2010:Annotation.AnnotationText="// 1위 데이터를 HTML 테이블 형식의 문자열로 변환하여 out_topRankData 변수에 저장합니다.&#xA;&#xA;in_topRankDataTable은 1위 데이터를 담고 있는 데이터 테이블입니다.&#xA;AsEnumerable 메서드를 사용하여 테이블의 각 행을 순회합니다.&#xA;Select 메서드는 각 행을 HTML 테이블 행 형식의 문자열로 변환합니다.&#xA;String.Format 메서드는 HTML 형식의 문자열에 각 열의 데이터를 삽입합니다.&#xA;변환된 각 행은 문자열 배열로 변환된 후 String.Join 메서드를 통해 하나의 문자열로 합쳐집니다.&#xA;결과 문자열은 out_topRankData 변수에 저장됩니다.&#xA;&#xA;// in_topRankDataTable의 각 행을 순회하며 HTML 테이블 행 형식으로 변환합니다.&#xA;out_topRankData = String.Join(&quot;&quot;, in_topRankDataTable.AsEnumerable().Select(Function(row) &#xA;    // 각 행의 데이터를 HTML 테이블 행으로 변환합니다.&#xA;    String.Format(&quot;&lt;tr&gt;&#xA;        &lt;td style='text-align: center; height: 29px; border: 1pt solid rgb(0, 0, 0);'&gt;&#xA;            &lt;span style='font-family: ''Malgun Gothic''; font-size: 12pt;'&gt;{0}&lt;/span&gt;&#xA;        &lt;/td&gt;&#xA;        &lt;td style='text-align: center; height: 29px; border: 1pt solid rgb(0, 0, 0);'&gt;&#xA;            &lt;span style='font-family: ''Malgun Gothic''; font-size: 12pt;'&gt;{1}&lt;/span&gt;&#xA;        &lt;/td&gt;&#xA;        &lt;td style='text-align: center; height: 29px; border: 1pt solid rgb(0, 0, 0);'&gt;&#xA;            &lt;span style='font-family: ''Malgun Gothic''; font-size: 12pt;'&gt;{2}&lt;/span&gt;&#xA;        &lt;/td&gt;&#xA;        &lt;td style='text-align: center; height: 29px; border: 1pt solid rgb(0, 0, 0);'&gt;&#xA;            &lt;span style='font-family: ''Malgun Gothic''; font-size: 12pt;'&gt;{3}&lt;/span&gt;&#xA;        &lt;/td&gt;&#xA;        &lt;td style='text-align: center; height: 29px; border: 1pt solid rgb(0, 0, 0);'&gt;&#xA;            &lt;span style='font-family: ''Malgun Gothic''; font-size: 12pt;'&gt;{4}&lt;/span&gt;&#xA;        &lt;/td&gt;&lt;/tr&gt;&quot;, &#xA;        // 각 열의 데이터를 {0}부터 {4}까지 순서대로 삽입합니다.&#xA;        row(&quot;순위&quot;), row(&quot;공연명&quot;), row(&quot;시작일&quot;), row(&quot;종료일&quot;), row(&quot;장소&quot;)&#xA;    )&#xA;).ToArray())  // 각 행을 변환한 후 문자열 배열로 변환하고 이를 다시 하나의 문자열로 합칩니다." DisplayName="1위 DT를 문자열 변환 | Assign" sap:VirtualizedContainerService.HintSize="642,936.6666666666666" sap2010:WorkflowViewState.IdRef="Assign_9">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_topRankData]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[String.Join("", in_topRankDataTable.AsEnumerable().Select(Function(row) String.Format("&lt;tr&gt;&lt;td style='text-align: center; height: 29px; border: 1pt solid rgb(0, 0, 0);'&gt;&lt;span style='font-family: ''Malgun Gothic''; font-size: 12pt;'&gt;{0}&lt;/span&gt;&lt;/td&gt;&lt;td style='text-align: center; height: 29px; border: 1pt solid rgb(0, 0, 0);'&gt;&lt;span style='font-family: ''Malgun Gothic''; font-size: 12pt;'&gt;{1}&lt;/span&gt;&lt;/td&gt;&lt;td style='text-align: center; height: 29px; border: 1pt solid rgb(0, 0, 0);'&gt;&lt;span style='font-family: ''Malgun Gothic''; font-size: 12pt;'&gt;{2}&lt;/span&gt;&lt;/td&gt;&lt;td style='text-align: center; height: 29px; border: 1pt solid rgb(0, 0, 0);'&gt;&lt;span style='font-family: ''Malgun Gothic''; font-size: 12pt;'&gt;{3}&lt;/span&gt;&lt;/td&gt;&lt;td style='text-align: center; height: 29px; border: 1pt solid rgb(0, 0, 0);'&gt;&lt;span style='font-family: ''Malgun Gothic''; font-size: 12pt;'&gt;{4}&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;", row("순위"), row("공연명"), row("시작일"), row("종료일"), row("장소"))).ToArray())]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+  </Sequence>
+</Activity>
